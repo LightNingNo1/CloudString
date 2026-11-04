@@ -11,6 +11,7 @@
         <File path="src/additive_engine.v" type="file.verilog" enable="1"/>
         <File path="src/audio_mixer.v" type="file.verilog" enable="1"/>
         <File path="src/ble_link.v" type="file.verilog" enable="1"/>
+        <File path="src/chorus.v" type="file.verilog" enable="1"/>
         <File path="src/dbg_adc_tx.v" type="file.verilog" enable="1"/>
         <File path="src/dbg_tune.v" type="file.verilog" enable="1"/>
         <File path="src/dbg_tune_ctl.v" type="file.verilog" enable="1"/>
@@ -36,6 +37,7 @@
         <File path="src/prom_scan32.v" type="file.verilog" enable="1"/>
         <File path="src/rec_ram.v" type="file.verilog" enable="1"/>
         <File path="src/rec_reader.v" type="file.verilog" enable="1"/>
+        <File path="src/reverb.v" type="file.verilog" enable="1"/>
         <File path="src/song_ctl.v" type="file.verilog" enable="1"/>
         <File path="src/song_player.v" type="file.verilog" enable="1"/>
         <File path="src/song_ram.v" type="file.verilog" enable="1"/>

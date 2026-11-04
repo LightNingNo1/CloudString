@@ -3,9 +3,7 @@ module tone_gen_top(
     input  wire       clk,
     input  wire       key_mode,    // F10 模式键（IO 内部上拉，按下=0）：单击(<1s)=切音色，长按1s~2.5s=指引开/停，长按2.5s=切曲
                                     // 三区间手势判定见文件末尾内联的 f10_ctl 与第 4 节
-    input  wire       key_slide,   // 【已弃用】原滑音使能键 PIN 88；滑音现由模式决定，此引脚不再使用
     input  wire       enc_a, enc_b, enc_sw,   // EC11 编码器：A/B 相 + 轴按开关；公共端接 GND（内部上拉，空闲=1、按下=0）
-    input  wire       key_song,    // 【已弃用】曲目键已取消：指引开/停由 F10 长按 1s~2.5s 负责
     input  wire       key_test,    // D11 测试音键（IO 内部上拉，按下=0）：触发模式对应弦（拨弦=C5弦、拉弦=第2弦）
     // ---- LCD 人机界面按键（IO 内部上拉，按下=0）----
     input  wire       key_up,      // P6：光标上移 / 示波模式上一页
@@ -430,6 +428,28 @@ always @(posedge clk_audio) begin
     vol_s2 <= vol_s1;
 end
 wire [15:0] master_vol_a = vol_s2;
+
+// -------- 效果器开关控制（混响 / 合成）--------
+// 默认全关（bypass）。在演奏页（S_PLAY = ui_scr==3'd2）用 M7 短按循环切换 4 态：
+//   00=都关 → 01=混响开 → 10=合成开 → 11=全开 → 回 00
+// ui_ok_short / ui_scr 在 50MHz 域，用 2FF 同步到 120MHz 音频域。
+reg [1:0] eff_state;                         // 50MHz 域寄存器
+always @(posedge clk or negedge rst_n) begin
+    if(!rst_n)                         eff_state <= 2'b00;
+    else if((ui_scr == 3'd2) && ui_ok_short) eff_state <= eff_state + 2'd1;
+end
+reg eff_s0_rev, eff_s1_rev, eff_s0_cho, eff_s1_cho;   // 120MHz 域 2FF
+always @(posedge clk_audio or negedge rst_n_aud) begin
+    if(!rst_n_aud) begin
+        eff_s0_rev <= 1'b0; eff_s1_rev <= 1'b0;
+        eff_s0_cho <= 1'b0; eff_s1_cho <= 1'b0;
+    end else begin
+        eff_s0_rev <= eff_state[0]; eff_s1_rev <= eff_s0_rev;
+        eff_s0_cho <= eff_state[1]; eff_s1_cho <= eff_s0_cho;
+    end
+end
+wire reverb_en_a  = eff_s1_rev;
+wire chorus_en_a  = eff_s1_cho;
 
 reg [31:0] klv_s1, klv_s2;
 always @(posedge clk_audio) begin
@@ -876,12 +896,22 @@ dbg_tune u_dbg_tune (
 // 10. 旧的 pROM/prom_scan32/mul18_arb/8×string_4partial/audio_mixer 已整体删除，
 //     由第 9 节的 additive_engine（32 声部 x 16 泛音）取代。
 
+// 10a. 效果器链（音频域 120MHz）：混响 + 合成（可独立 bypass）
+//     每帧 sample_en 触发一次处理（reverb ≈6 拍，chorus ≈2 拍，1250 拍帧内充裕）。
+//     默认都关（bypass 直通），在演奏页（S_PLAY）用 M7 短按循环切换：
+//       00=都关 → 01=混响开 → 10=合成开 → 11=全开 → 回 00
+wire signed [23:0] mix_rev, mix_eff;
+reverb  u_rev  (.clk(clk_audio), .rst_n(rst_n_aud), .sample_en(sample_en),
+                .x_in(mix), .en(reverb_en_a),  .y_out(mix_rev));
+chorus  u_cho  (.clk(clk_audio), .rst_n(rst_n_aud), .sample_en(sample_en),
+                .x_in(mix_rev), .en(chorus_en_a), .y_out(mix_eff));
+
 // 11. I2S 发送器（音频域 120MHz，小数分频精确输出 96kHz）
-//     混音结果已在 120MHz 域产生（第 9 节引擎），直接送 I2S，无需跨域同步。
+//     混音结果（经效果器链后）在 120MHz 域产生，直接送 I2S，无需跨域同步。
 //     i2s_tx 每帧末（右声道发完）产生 sample_en —— 它同时是引擎的帧起始脉冲；
 //     引擎在下一帧 sample_en 之前（约 570 拍 << 1250 拍）更新 mix，时序充裕。
 wire bclk, lrclk, dout;
-i2s_tx u_i2s (.clk(clk_audio), .rst_n(rst_n_aud), .sample_l(mix), .sample_r(mix),
+i2s_tx u_i2s (.clk(clk_audio), .rst_n(rst_n_aud), .sample_l(mix_eff), .sample_r(mix_eff),
     .bclk(bclk), .lrclk(lrclk), .dout(dout), .sample_en(sample_en));
 assign hp_bck = bclk;
 assign hp_ws  = lrclk;
