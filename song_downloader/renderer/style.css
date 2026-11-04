@@ -1,0 +1,223 @@
+/* style.css - 曲目下载器 UI */
+:root {
+    --bg: #0f1420;
+    --panel: #171e2e;
+    --panel2: #1e2739;
+    --border: #2a3550;
+    --text: #dbe4f5;
+    --muted: #7e8aa5;
+    --accent: #4da3ff;
+    --ok: #34d399;
+    --warn: #fbbf24;
+    --err: #f87171;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+    font-size: 14px;
+    padding: 16px 20px 24px;
+}
+
+.app { max-width: 860px; margin: 0 auto; }
+
+/* 头部 */
+.header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 18px;
+}
+.title { font-size: 20px; font-weight: 600; letter-spacing: .5px; }
+.title-group { display: flex; align-items: baseline; gap: 10px; }
+.version {
+    font-size: 12px; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 1px 9px; background: var(--panel2);
+}
+.status { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+.status-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--err); box-shadow: 0 0 6px var(--err); }
+.status-dot.on { background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+
+/* 卡片分区 */
+.section {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+}
+.section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.tag {
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    color: var(--accent); background: rgba(77, 163, 255, .12);
+    padding: 2px 8px; border-radius: 4px;
+}
+.name { font-size: 15px; font-weight: 600; }
+
+/* 按钮 */
+.btn {
+    background: var(--panel2); color: var(--text);
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: 7px 16px; font-size: 13px; cursor: pointer;
+    transition: filter .15s;
+}
+.btn:hover:not(:disabled) { filter: brightness(1.25); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn.primary { background: #2b5fae; border-color: #3b74c9; }
+.btn.success { background: #1d7a54; border-color: #26936a; }
+.btn.danger { background: #8a3540; border-color: #a84350; }
+.btn.small { padding: 5px 12px; font-size: 12px; }
+
+/* 连接栏 */
+.connect-bar, .song-bar, .dl-bar, .rec-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.port-select {
+    background: var(--panel2); color: var(--text);
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: 6px 10px; font-size: 13px; min-width: 220px;
+}
+.hint { margin-top: 8px; font-size: 12px; color: var(--muted); }
+.song-info { margin-top: 10px; font-size: 13px; color: var(--muted); line-height: 1.7; }
+.song-info b { color: var(--text); }
+
+/* 进度 */
+.progress-track {
+    height: 8px; background: var(--panel2); border-radius: 4px;
+    margin-top: 10px; overflow: hidden;
+}
+.progress-fill {
+    height: 100%; width: 0; background: linear-gradient(90deg, #2b7fd6, var(--accent));
+    border-radius: 4px; transition: width .25s;
+}
+.progress-label { margin-top: 6px; font-size: 12px; color: var(--muted); min-height: 16px; }
+.hidden { display: none; }
+
+/* 下载槽位状态：FPGA 可存 3 首（槽 1/2/3 = 曲目 4/5/6） */
+.slot-bar { display: flex; gap: 8px; margin-bottom: 12px; }
+.slot-cell {
+    flex: 1; border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 10px; min-width: 0; transition: background .2s;
+}
+.slot-cell.empty { background: rgba(255, 255, 255, .02); opacity: .8; }
+.slot-cell.used { background: rgba(52, 211, 153, .08); border-color: rgba(52, 211, 153, .45); }
+.slot-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.slot-cell.used .slot-title { color: var(--ok); }
+.slot-sub { font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.slot-cell.used .slot-sub { color: #9fd8c0; }
+
+/* 手动乐谱输入 */
+.score-input {
+    width: 100%; min-height: 180px; resize: vertical;
+    background: var(--panel2); color: var(--text);
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: 8px 10px; font-family: Consolas, monospace; font-size: 13px;
+    line-height: 1.7;
+}
+.score-input:focus { outline: none; border-color: var(--accent); }
+.score-bar { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+
+/* 音符预览 */
+.note-preview {
+    margin-top: 10px; font-family: Consolas, monospace; font-size: 12px;
+    color: var(--muted); max-height: 130px; overflow-y: auto;
+    background: var(--panel2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 8px 10px; line-height: 1.8; white-space: pre-wrap;
+}
+.note-preview .hl { color: var(--accent); }
+
+/* 日志 */
+.log-section { padding-bottom: 8px; }
+.log-area {
+    height: 200px; overflow-y: auto;
+    background: #0c111c; border: 1px solid var(--border); border-radius: 6px;
+    padding: 8px 10px; font-family: Consolas, monospace; font-size: 12px;
+    line-height: 1.7; color: #9fb0cc; white-space: pre-wrap; word-break: break-all;
+}
+.log-area .ok { color: var(--ok); }
+.log-area .err { color: var(--err); }
+.log-area .tx { color: #c4a2ff; }
+.log-area .rx { color: #7fd8ff; }
+
+/* 录制 */
+.rec-status {
+    font-size: 13px;
+    color: var(--muted);
+    margin-left: 4px;
+}
+.rec-status.rec-on {
+    color: var(--err);
+    font-weight: 600;
+    animation: rec-pulse 1s infinite;
+}
+@keyframes rec-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+.rec-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.note-preview {
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    background: #0c111c;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-family: Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #9fb0cc;
+    white-space: pre;
+}
+
+/* 底部播放条 */
+.player-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--panel);
+    border-top: 1px solid var(--border);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 100;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+.player-time {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: Consolas, monospace;
+    min-width: 100px;
+    text-align: center;
+}
+.player-progress {
+    flex: 1;
+    height: 6px;
+    background: var(--panel2);
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 100px;
+}
+.player-progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #2b7fd6, var(--accent));
+    border-radius: 3px;
+    transition: width .1s linear;
+}
+.player-title {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+body { padding-bottom: 64px; }

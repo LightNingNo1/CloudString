@@ -1,0 +1,72 @@
+# ===== Trae / 编辑器 / 系统 =====
+.trae/
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ===== 高云 Gowin 工程构建产物 =====
+impl/
+*.gprj.user
+*_process_config.json
+*.gws
+*.fs
+*.rao
+*.rpt
+*.tr
+*.pwr
+*.sbit
+*.bin
+*.cst.bak
+
+# ===== 仿真 / 波形 / 临时输出 =====
+*.vvp
+*.vcd
+*.fst
+*.lxt
+*.lxt2
+*.wlf
+sim_build/
+xsim.dir/
+__pycache__/
+*.pyc
+*.pyo
+
+# ===== 日志与临时文件 =====
+*.log
+*_out.txt
+*_err.txt
+*.tmp
+*.bak
+*.orig
+*.rej
+~*
+
+# ===== Node.js =====
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+dist/
+build/
+coverage/
+.cache/
+
+# ===== 生成的二进制 / 大体积产物 =====
+*.exe
+*.dll
+*.so
+*.o
+*.obj
+*.a
+*.lib
+
+# ===== 备份目录 =====
+src_backup_*/
+_backup_*/
+*.zip
+*.7z

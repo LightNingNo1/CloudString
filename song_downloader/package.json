@@ -1,0 +1,19 @@
+{
+  "name": "song-downloader",
+  "version": "1.4.2",
+  "description": "MP3 -> 拨弦模式 32 音曲目 -> 蓝牙下载到 FPGA 的上位机",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test_pipeline.js && node test_download_seq.js"
+  },
+  "dependencies": {
+    "@spotify/basic-pitch": "^1.0.1",
+    "@tensorflow/tfjs-backend-wasm": "^3.21.0",
+    "mpg123-decoder": "^1.0.3",
+    "serialport": "^12.0.0"
+  },
+  "devDependencies": {
+    "electron": "^31.7.0"
+  }
+}

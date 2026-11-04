@@ -1,0 +1,60 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2A-18C" pn="GW2A-LV18PG256C8/I7">gw2a18c-011</Device>
+    <FileList>
+        <File path="src/ADSR.v" type="file.verilog" enable="1"/>
+        <File path="src/adc128s102.v" type="file.verilog" enable="1"/>
+        <File path="src/adc_mux8.v" type="file.verilog" enable="1"/>
+        <File path="src/additive_engine.v" type="file.verilog" enable="1"/>
+        <File path="src/audio_mixer.v" type="file.verilog" enable="1"/>
+        <File path="src/ble_link.v" type="file.verilog" enable="1"/>
+        <File path="src/dbg_adc_tx.v" type="file.verilog" enable="1"/>
+        <File path="src/dbg_tune.v" type="file.verilog" enable="1"/>
+        <File path="src/dbg_tune_ctl.v" type="file.verilog" enable="1"/>
+        <File path="src/debounce.v" type="file.verilog" enable="1"/>
+        <File path="src/ec11.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_prom.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_prom_sin.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll_audio.v" type="file.verilog" enable="1"/>
+        <File path="src/i2s_tx.v" type="file.verilog" enable="1"/>
+        <File path="src/lcd_rgb.v" type="file.verilog" enable="1"/>
+        <File path="src/led_test_top.v" type="file.verilog" enable="1"/>
+        <File path="src/mode_switch.v" type="file.verilog" enable="1"/>
+        <File path="src/mul18_arb.v" type="file.verilog" enable="1"/>
+        <File path="src/mul18_shared.v" type="file.verilog" enable="1"/>
+        <File path="src/pitch_32v.v" type="file.verilog" enable="1"/>
+        <File path="src/pitch_bank8.v" type="file.verilog" enable="1"/>
+        <File path="src/pitch_map.v" type="file.verilog" enable="1"/>
+        <File path="src/pitch_tbl.v" type="file.verilog" enable="1"/>
+        <File path="src/por_rst.v" type="file.verilog" enable="1"/>
+        <File path="src/press_vol.v" type="file.verilog" enable="1"/>
+        <File path="src/press_vol_cell.v" type="file.verilog" enable="1"/>
+        <File path="src/prom_scan32.v" type="file.verilog" enable="1"/>
+        <File path="src/rec_ram.v" type="file.verilog" enable="1"/>
+        <File path="src/rec_reader.v" type="file.verilog" enable="1"/>
+        <File path="src/song_ctl.v" type="file.verilog" enable="1"/>
+        <File path="src/song_player.v" type="file.verilog" enable="1"/>
+        <File path="src/song_ram.v" type="file.verilog" enable="1"/>
+        <File path="src/song_recorder.v" type="file.verilog" enable="1"/>
+        <File path="src/song_rom.v" type="file.verilog" enable="1"/>
+        <File path="src/string_4osc.v" type="file.verilog" enable="1"/>
+        <File path="src/tone_gen_top.v" type="file.verilog" enable="1"/>
+        <File path="src/uart_rx.v" type="file.verilog" enable="1"/>
+        <File path="src/uart_tx.v" type="file.verilog" enable="1"/>
+        <File path="src/ui_font_rom.v" type="file.verilog" enable="1"/>
+        <File path="src/ui_lines.v" type="file.verilog" enable="1"/>
+        <File path="src/ui_menu.v" type="file.verilog" enable="1"/>
+        <File path="src/ui_text.v" type="file.verilog" enable="1"/>
+        <File path="src/vibrato.v" type="file.verilog" enable="1"/>
+        <File path="src/vis_lissajous.v" type="file.verilog" enable="1"/>
+        <File path="src/vis_pair_src.v" type="file.verilog" enable="1"/>
+        <File path="src/vis_scope.v" type="file.verilog" enable="1"/>
+        <File path="src/vis_spectrum.v" type="file.verilog" enable="1"/>
+        <File path="src/LC G1.cst" type="file.cst" enable="1"/>
+        <File path="src/LC G1.sdc" type="file.sdc" enable="1"/>
+    </FileList>
+</Project>

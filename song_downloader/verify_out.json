@@ -1,0 +1,514 @@
+[
+  {
+    "s": 25,
+    "midi": 87,
+    "noteName": "D#6",
+    "durMs": 340,
+    "layer": 3,
+    "inner": 1
+  },
+  {
+    "s": 17,
+    "midi": 75,
+    "noteName": "D#5",
+    "durMs": 2580,
+    "layer": 2,
+    "inner": 1
+  },
+  {
+    "s": 17,
+    "midi": 75,
+    "noteName": "D#5",
+    "durMs": 2920,
+    "layer": 2,
+    "inner": 1
+  },
+  {
+    "s": 12,
+    "midi": 68,
+    "noteName": "G#4",
+    "durMs": 3680,
+    "layer": 1,
+    "inner": 4
+  },
+  {
+    "s": 15,
+    "midi": 72,
+    "noteName": "C5",
+    "durMs": 1900,
+    "layer": 1,
+    "inner": 7
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 5760,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 9,
+    "midi": 63,
+    "noteName": "D#4",
+    "durMs": 3360,
+    "layer": 1,
+    "inner": 1
+  },
+  {
+    "s": 17,
+    "midi": 75,
+    "noteName": "D#5",
+    "durMs": 3620,
+    "layer": 2,
+    "inner": 1
+  },
+  {
+    "s": 7,
+    "midi": 60,
+    "noteName": "C4",
+    "durMs": 1860,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 5,
+    "midi": 58,
+    "noteName": "A#3",
+    "durMs": 2220,
+    "layer": 0,
+    "inner": 5
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 1920,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 4200,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 7,
+    "midi": 60,
+    "noteName": "C4",
+    "durMs": 1820,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 1780,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 2160,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 5,
+    "midi": 58,
+    "noteName": "A#3",
+    "durMs": 3420,
+    "layer": 0,
+    "inner": 5
+  },
+  {
+    "s": 7,
+    "midi": 61,
+    "noteName": "C#4",
+    "durMs": 3160,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 7,
+    "midi": 61,
+    "noteName": "C#4",
+    "durMs": 1860,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 15,
+    "midi": 73,
+    "noteName": "C#5",
+    "durMs": 3260,
+    "layer": 1,
+    "inner": 7
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 1880,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 5,
+    "midi": 58,
+    "noteName": "A#3",
+    "durMs": 2640,
+    "layer": 0,
+    "inner": 5
+  },
+  {
+    "s": 12,
+    "midi": 68,
+    "noteName": "G#4",
+    "durMs": 2600,
+    "layer": 1,
+    "inner": 4
+  },
+  {
+    "s": 4,
+    "midi": 55,
+    "noteName": "G3",
+    "durMs": 2340,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 13,
+    "midi": 70,
+    "noteName": "A#4",
+    "durMs": 5220,
+    "layer": 1,
+    "inner": 5
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 3300,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 12,
+    "midi": 67,
+    "noteName": "G4",
+    "durMs": 8080,
+    "layer": 1,
+    "inner": 4
+  },
+  {
+    "s": 5,
+    "midi": 58,
+    "noteName": "A#3",
+    "durMs": 5220,
+    "layer": 0,
+    "inner": 5
+  },
+  {
+    "s": 12,
+    "midi": 68,
+    "noteName": "G#4",
+    "durMs": 3400,
+    "layer": 1,
+    "inner": 4
+  },
+  {
+    "s": 9,
+    "midi": 63,
+    "noteName": "D#4",
+    "durMs": 3060,
+    "layer": 1,
+    "inner": 1
+  },
+  {
+    "s": 5,
+    "midi": 58,
+    "noteName": "A#3",
+    "durMs": 3580,
+    "layer": 0,
+    "inner": 5
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 1860,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 15,
+    "midi": 72,
+    "noteName": "C5",
+    "durMs": 4520,
+    "layer": 1,
+    "inner": 7
+  },
+  {
+    "s": 19,
+    "midi": 77,
+    "noteName": "F5",
+    "durMs": 3300,
+    "layer": 2,
+    "inner": 3
+  },
+  {
+    "s": 7,
+    "midi": 61,
+    "noteName": "C#4",
+    "durMs": 1620,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 14,
+    "midi": 71,
+    "noteName": "B4",
+    "durMs": 3740,
+    "layer": 1,
+    "inner": 6
+  },
+  {
+    "s": 10,
+    "midi": 64,
+    "noteName": "E4",
+    "durMs": 4440,
+    "layer": 1,
+    "inner": 2
+  },
+  {
+    "s": 7,
+    "midi": 60,
+    "noteName": "C4",
+    "durMs": 4700,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 4080,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 1920,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 3540,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 13,
+    "midi": 70,
+    "noteName": "A#4",
+    "durMs": 2400,
+    "layer": 1,
+    "inner": 5
+  },
+  {
+    "s": 9,
+    "midi": 63,
+    "noteName": "D#4",
+    "durMs": 4200,
+    "layer": 1,
+    "inner": 1
+  },
+  {
+    "s": 5,
+    "midi": 58,
+    "noteName": "A#3",
+    "durMs": 2300,
+    "layer": 0,
+    "inner": 5
+  },
+  {
+    "s": 9,
+    "midi": 63,
+    "noteName": "D#4",
+    "durMs": 1740,
+    "layer": 1,
+    "inner": 1
+  },
+  {
+    "s": 12,
+    "midi": 68,
+    "noteName": "G#4",
+    "durMs": 1940,
+    "layer": 1,
+    "inner": 4
+  },
+  {
+    "s": 9,
+    "midi": 63,
+    "noteName": "D#4",
+    "durMs": 2540,
+    "layer": 1,
+    "inner": 1
+  },
+  {
+    "s": 7,
+    "midi": 61,
+    "noteName": "C#4",
+    "durMs": 2920,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 12,
+    "midi": 67,
+    "noteName": "G4",
+    "durMs": 3700,
+    "layer": 1,
+    "inner": 4
+  },
+  {
+    "s": 9,
+    "midi": 63,
+    "noteName": "D#4",
+    "durMs": 3860,
+    "layer": 1,
+    "inner": 1
+  },
+  {
+    "s": 7,
+    "midi": 61,
+    "noteName": "C#4",
+    "durMs": 1640,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 3280,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 7,
+    "midi": 61,
+    "noteName": "C#4",
+    "durMs": 4120,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 9,
+    "midi": 63,
+    "noteName": "D#4",
+    "durMs": 6320,
+    "layer": 1,
+    "inner": 1
+  },
+  {
+    "s": 7,
+    "midi": 61,
+    "noteName": "C#4",
+    "durMs": 2980,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 9,
+    "midi": 63,
+    "noteName": "D#4",
+    "durMs": 2200,
+    "layer": 1,
+    "inner": 1
+  },
+  {
+    "s": 9,
+    "midi": 63,
+    "noteName": "D#4",
+    "durMs": 5100,
+    "layer": 1,
+    "inner": 1
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 3700,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 4,
+    "midi": 56,
+    "noteName": "G#3",
+    "durMs": 2120,
+    "layer": 0,
+    "inner": 4
+  },
+  {
+    "s": 12,
+    "midi": 67,
+    "noteName": "G4",
+    "durMs": 4780,
+    "layer": 1,
+    "inner": 4
+  },
+  {
+    "s": 9,
+    "midi": 63,
+    "noteName": "D#4",
+    "durMs": 2860,
+    "layer": 1,
+    "inner": 1
+  },
+  {
+    "s": 17,
+    "midi": 75,
+    "noteName": "D#5",
+    "durMs": 1880,
+    "layer": 2,
+    "inner": 1
+  },
+  {
+    "s": 7,
+    "midi": 61,
+    "noteName": "C#4",
+    "durMs": 2380,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 7,
+    "midi": 61,
+    "noteName": "C#4",
+    "durMs": 2100,
+    "layer": 0,
+    "inner": 7
+  },
+  {
+    "s": 7,
+    "midi": 60,
+    "noteName": "C4",
+    "durMs": 7500,
+    "layer": 0,
+    "inner": 7
+  }
+]

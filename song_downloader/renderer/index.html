@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' blob:;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曲目下载器 (FPGA 蓝牙)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="title-group">
+                <h1 class="title">曲目下载器</h1>
+                <span class="version" id="appVersion">v—</span>
+            </div>
+            <div class="status" id="connStatus">
+                <span class="status-dot" id="connDot"></span>
+                <span class="status-text" id="connText">未连接</span>
+            </div>
+        </header>
+
+        <!-- 蓝牙连接 -->
+        <section class="section">
+            <div class="section-header"><span class="tag">LINK</span><span class="name">蓝牙模块连接</span></div>
+            <div class="connect-bar">
+                <select id="portSelect" class="port-select"><option value="">选择端口</option></select>
+                <button id="refreshBtn" class="btn small">刷新</button>
+                <button id="connectBtn" class="btn primary small">连接</button>
+                <button id="disconnectBtn" class="btn danger small" disabled>断开</button>
+            </div>
+            <p class="hint">先在 Windows 蓝牙设置中配对 XLBT（SPP 串口），配对后会出现蓝牙 COM 口</p>
+        </section>
+
+        <!-- 手动乐谱输入（主功能） -->
+        <section class="section">
+            <div class="section-header"><span class="tag">SCORE</span><span class="name">手动乐谱输入（主功能）</span></div>
+            <p class="hint">每行一个事件：<b>弦号[,弦号] 时值毫秒</b>。弦号 0..31（或音名 C3..B6 白键）；最多 2 弦号 = 2 音混音；时值 10~40950ms（首事件为起始灯塔：常亮等你按下后才计时，其余事件窗口开头闪 200ms 提示、到时自动跳下一事件）；最多 255 事件；# 开头为注释</p>
+            <textarea id="scoreInput" class="score-input" spellcheck="false"
+                placeholder="每行一个事件：# 开头为注释&#10;例：&#10;7 500        # C4 弦7，500ms&#10;7,11 960     # C4+E4 双音，960ms&#10;0 320"></textarea>
+            <div class="score-bar">
+                <button id="scoreExampleBtn" class="btn small">载入示例</button>
+                <button id="parseScoreBtn" class="btn primary">解析并编码</button>
+                <button id="scorePlayBtn" class="btn small" disabled>▶ 播放</button>
+            </div>
+            <div id="scoreInfo" class="song-info"></div>
+            <div id="scorePreview" class="note-preview"></div>
+        </section>
+
+        <!-- 选歌与转谱（次功能） -->
+        <section class="section">
+            <div class="section-header"><span class="tag">SONG</span><span class="name">AI 转谱（次功能）</span></div>
+            <div class="song-bar">
+                <button id="pickBtn" class="btn">选择 MP3…</button>
+                <button id="transcribeBtn" class="btn primary" disabled>AI 转谱</button>
+                <button id="aiPlayBtn" class="btn small" disabled>▶ 播放</button>
+            </div>
+            <div id="songInfo" class="song-info"></div>
+            <div id="transcribeBar" class="progress-track hidden"><div class="progress-fill" id="transcribeFill"></div></div>
+            <div id="transcribeLabel" class="progress-label"></div>
+            <div id="notePreview" class="note-preview"></div>
+        </section>
+
+        <!-- 录制 -->
+        <section class="section">
+            <div class="section-header"><span class="tag">REC</span><span class="name">录制弹奏</span></div>
+            <div class="rec-bar">
+                <button id="recStartBtn" class="btn danger" disabled>开始录制</button>
+                <button id="recStopBtn" class="btn" disabled>停止录制</button>
+                <button id="recReadBtn" class="btn" disabled>读取录制</button>
+                <button id="recPlayBtn" class="btn" disabled>▶ 播放</button>
+                <span id="recStatus" class="rec-status">未录制</span>
+            </div>
+            <div id="recInfo" class="song-info"></div>
+            <div id="recPreview" class="note-preview"></div>
+            <div class="rec-actions">
+                <button id="recToScoreBtn" class="btn primary" disabled>载入为乐谱（可编辑）</button>
+            </div>
+        </section>
+
+        <!-- 下载 -->
+        <section class="section">
+            <div class="section-header"><span class="tag">DL</span><span class="name">下载到 FPGA 并播放</span></div>
+            <div class="slot-bar" id="slotBar"></div>
+            <div class="dl-bar">
+                <button id="downloadBtn" class="btn success" disabled>下载到 FPGA 并播放</button>
+                <span id="dlProgress" class="dl-progress"></span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" id="dlFill"></div></div>
+            <p class="hint">FPGA 可存 3 首下载曲目（曲目号 1/2/3 = 槽 1/2/3，另有 1 首预制曲目号 0）；下载超过 3 首自动从槽 1 开始循环覆盖</p>
+        </section>
+
+        <!-- 日志 -->
+        <section class="section log-section">
+            <div class="section-header"><span class="tag">LOG</span><span class="name">通信日志</span></div>
+            <div id="logArea" class="log-area"></div>
+        </section>
+    </div>
+
+    <!-- 底部播放条 -->
+    <div class="player-bar" id="playerBar">
+        <button id="playerPlayBtn" class="btn primary small" disabled>▶ 播放</button>
+        <button id="playerStopBtn" class="btn small" disabled>■ 停止</button>
+        <span class="player-time" id="playerTime">0:00 / 0:00</span>
+        <div class="player-progress">
+            <div class="player-progress-fill" id="playerFill"></div>
+        </div>
+        <span class="player-title" id="playerTitle">未加载</span>
+    </div>
+    <script src="audio_player.js"></script>
+    <script src="renderer.js"></script>
+</body>
+</html>
